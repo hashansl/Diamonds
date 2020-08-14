@@ -19,6 +19,7 @@
   </head>
 
   <body>
+    <div>
     <nav class="nav-extended">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">Sarah's Flowers & Jewel's Diamonds</a>
@@ -41,6 +42,7 @@
         </ul>
       </div>
     </nav>
+    
 
     <ul class="sidenav" id="mobile-demo">
       <li><a href="sass.html">Sass</a></li>
@@ -64,13 +66,10 @@
           <h6>GEM ID: A1</h6>
           <h6>WINNER: John</h6>
 
-          <canvas
-            id="myCanvas"
-            class="materialboxed"
-            width="1080"
-            height="1080"
-            style="border: 2px solid;"
-            ;
+          <canvas id="myCanvas" 
+          class="materialboxed"
+          width=1080
+          height=1080
           ></canvas>
 
           <ul class="pagination">
@@ -87,6 +86,74 @@
             </li>
           </ul>
         </div>
+
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input
+                  placeholder="Diamond Name"
+                  id="name"
+                  type="text"
+                  class="active validate"
+                  required
+                />
+                <label for="name">Diamond Name</label>
+              </div>
+
+              <div class="input-field col s6">
+                <label for="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="password (Disabled)"
+                  class="validate"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <div class="input-field col s6">
+              <i class="material-icons prefix">smartphone</i>
+              <input
+                placeholder="Phone Number"
+                id="phonenumber"
+                type="text"
+                class="active validate"
+                required
+              />
+              <label for="name">Phone Number</label>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="Email" id="email" type="email" class="validate" />
+                <label for="email">Email</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <select>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Cash App</option>
+                  <option value="2">Bitcoin</option>
+                  <option value="3">Other</option>
+                </select>
+                <label>Materialize Select</label>
+              </div>
+            </div>
+
+            <!-- <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="address" class="materialize-textarea"></textarea>
+                <label for="address">Payment Name</label>
+              </div>
+            </div> -->
+          </form>
+        </div>
       </div>
     </div>
     <script>
@@ -100,8 +167,8 @@
         myCanvas.height = image.naturalHeight;
         ctx.drawImage(image, 0, 0);
         ctx.fillText(names[0], 50, 110);
-        ctx.fillText(names[0], 50, 110);
-        ctx.fillText(names[0], 50, 110);
+        ctx.fillText(names[1], 50, 210);
+        ctx.fillText(names[2], 50, 310);
       };
     </script>
 
