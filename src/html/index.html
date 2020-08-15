@@ -16,6 +16,77 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/index.js"></script>
+
+    <script>
+      const names = ['Ashan', 'Roshan', 'John', 'Sanath','Michal','Rose'];
+
+      function formShow() {
+        document.getElementById('form1').style.display = 'none';
+      }
+      function onClickMain(){
+        document.getElementById('form1').style.display = 'none';
+        document.getElementById("canvasAndDetails").style.display = "none";
+
+      }
+      function drawOnCanvas() {
+        const myCanvas = $('#myCanvas');
+        const ctx = myCanvas[0].getContext('2d');
+        const image = document.getElementById('myImage');
+        myCanvas.width = image.naturalWidth;
+        myCanvas.height = image.naturalHeight;
+        ctx.drawImage(image, 0, 0);
+        //Box1
+        ctx.font = "16px Dishonorable Mention";
+        ctx.textAlign = "center";
+        ctx.fillText(names[0], 202, 56);
+        //Box2
+        ctx.textAlign = "center";
+        ctx.fillText(names[1], 653, 56);
+        //Box3
+        ctx.textAlign = "center";
+        ctx.fillText(names[2], 855, 56);
+        //Box4
+        ctx.textAlign = "center";
+        ctx.fillText(names[3],185 ,343 );
+        //Box5
+        ctx.textAlign = "center";
+        ctx.fillText(names[4],528,211);
+        //Box6
+        ctx.textAlign = "center";
+        ctx.fillText(names[5],891,345);
+        //Box7
+        ctx.textAlign = "center";
+        ctx.fillText(names[0],114,632);
+        //Box8
+        ctx.textAlign = "center";
+        ctx.fillText(names[0],539,504);
+        //Box9
+        ctx.textAlign = "center";
+        ctx.fillText(names[0],955,445);
+        //Box10
+        ctx.textAlign = "center";
+        ctx.fillText(names[0],185,930);
+        //Box11
+        ctx.textAlign = "center";
+        ctx.fillText(names[0],535,886);
+        //Box12
+        ctx.textAlign = "center";
+        ctx.fillText(names[0],889,930 );
+        //Box13
+        ctx.textAlign = "center";
+        ctx.fillText(names[0],236,1037);
+        //Box14
+        ctx.textAlign = "center";
+        ctx.fillText(names[0], 668,1037);
+        //Box16
+        ctx.textAlign = "center";
+        ctx.fillText(names[0],867,1037);
+
+      }
+    </script>
   </head>
 
   <body>
@@ -27,14 +98,15 @@
           ><i class="material-icons">menu</i></a
         >
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="sass.html">Donate</a></li>
+          <!-- <li><a onclick='formShow()'>Donate</a></li> -->
+          <button onclick="formShow()">Donate</button>
           <li><a href="badges.html">Details</a></li>
           <li><a href="collapsible.html">Logout</a></li>
         </ul>
       </div>
       <div class="nav-content">
         <ul class="tabs tabs-transparent">
-          <li class="tab"><a href="#test3">Main</a></li>
+          <li class="tab" onclick="onClickMain()"><a >Main</a></li>
           <li class="tab"><a class="active" href="#test1">SARAH'S SEED</a></li>
           <li class="tab"><a href="#test2">JEWEL'S PICKAXES</a></li>
           <li class="tab"><a href="#test3">JEWEL'S DIAMONDS</a></li>
@@ -55,14 +127,14 @@
     <div id="test3" class="col s12">Test 3</div>
     <div id="test4" class="col s12">Test 4</div> -->
     <div class="container">
-      <div class="col">
+      <div class="col" id='canvasAndDetails'>
         <div class="row">
           <!-- <h6>Number of clusters:</h6> -->
           <!-- <h6>Number of members to next raffle result:</h6> -->
           <!-- <h6>detailssssss</h6> -->
           <!-- <h6>detailssssss</h6> -->
         </div>
-        <div class="row">
+        <div class="row" id="stage">
           <h6>GEM ID: A1</h6>
           <h6>WINNER: John</h6>
 
@@ -88,7 +160,7 @@
         </div>
 
         <div class="row">
-          <form class="col s12">
+          <form class="col s12" id="form1">
             <div class="row">
               <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
@@ -156,22 +228,10 @@
         </div>
       </div>
     </div>
-    <script>
-      var names = ['Ashan', 'Roshan', 'John', 'Sanath'];
-      window.onload = function () {
-        var myCanvas = $('#myCanvas');
-        var ctx = myCanvas[0].getContext('2d');
-
-        var image = document.getElementById('myImage');
-        myCanvas.width = image.naturalWidth;
-        myCanvas.height = image.naturalHeight;
-        ctx.drawImage(image, 0, 0);
-        ctx.fillText(names[0], 50, 110);
-        ctx.fillText(names[1], 50, 210);
-        ctx.fillText(names[2], 50, 310);
-      };
-    </script>
-
-    <img id="myImage" src="/images/LD.png" style="display: none;" ; />
+    <img 
+    id="myImage" 
+    src="https://drive.google.com/uc?export=download&id=1T91etovwthJF5bXSK1onXcxPfllMh9PK" 
+    style="display: none;" ; 
+    />
   </body>
 </html>
