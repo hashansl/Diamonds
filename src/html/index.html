@@ -21,9 +21,30 @@
     <script src="../js/index.js"></script>
 
     <script>
-      const names = ['Ashan', 'Roshan', 'John', 'Sanath','Michal','Rose'];
-      window.onload = function(){
+      // const names = ['Ashan', 'Roshan', 'John', 'Sanath','Michal','Rose'];
+      // var D = google.script.run.withSuccessHandler(A).getUserData();
+      var names = [];
+      for(i=0;i<20;i++){
+        names.push(i+1);
+      }
 
+      function algorithmToWin(names){
+
+        
+        
+      }
+
+
+
+
+
+      // console.log(D);
+      window.onload = function(){
+        document.getElementById('form1').style.display = 'none';
+        document.getElementById("winnerdetails").style.display = "none";
+        document.getElementById("myCanvas").style.display = "none";
+        document.getElementById("main").style.display = "block";
+    
       };
 
       function formShow() {
@@ -48,6 +69,14 @@
 
       }
       function onClickSarahsseed(){
+
+        // var D = google.script.run.withSuccessHandler(A).getUserData();
+        // console.log("Run");
+        // console.log(D);
+
+
+
+
         document.getElementById('form1').style.display = 'none';
         document.getElementById("winnerdetails").style.display = "block";
         document.getElementById("myCanvas").style.display = "block";
@@ -57,15 +86,30 @@
       }
       function onClickJewelsPickaxes(){
         document.getElementById('form1').style.display = 'none';
-        document.getElementById("winnerdetails").style.display = "block";
-        document.getElementById("myCanvas").style.display = "block";
+        document.getElementById("winnerdetails").style.display = "none";
+        document.getElementById("myCanvas").style.display = "none";
         document.getElementById("main").style.display = "none";
 
       }
+      function onClickJewelsDiamonds(){
+        document.getElementById('form1').style.display = 'none';
+        document.getElementById("winnerdetails").style.display = "none";
+        document.getElementById("myCanvas").style.display = "none";
+        document.getElementById("main").style.display = "none";
+
+      }
+      function onClickSarahFlowers(){
+        document.getElementById('form1').style.display = 'none';
+        document.getElementById("winnerdetails").style.display = "none";
+        document.getElementById("myCanvas").style.display = "none";
+        document.getElementById("main").style.display = "none";
+
+      }
+
       function drawOnCanvas() {
         const myCanvas = $('#myCanvas');
         const ctx = myCanvas[0].getContext('2d');
-        const image = document.getElementById('myImage');
+        const image = document.getElementById('myImage2');
         myCanvas.width = image.naturalWidth;
         myCanvas.height = image.naturalHeight;
         ctx.drawImage(image, 0, 0);
@@ -118,10 +162,10 @@
 
       }
 
-      document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('select');
-      var instances = M.FormSelect.init(elems, options);
+      $(document).ready(function(){
+        $('select').formSelect(); 
       });
+
 
     </script>
   </head>
@@ -135,27 +179,24 @@
           ><i class="material-icons">menu</i></a
         >
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <!-- <li><a onclick='formShow()'>Donate</a></li> -->
           <li><a onclick="onClickDonate()">Donate</a></li>
-          <li><a onclick="onClickDonate()">Details</a></li>
           <li><a href="collapsible.html">Logout</a></li>
         </ul>
       </div>
       <div class="nav-content">
         <ul class="tabs tabs-transparent">
           <li class="tab" onclick="onClickMain()"><a >Main</a></li>
-          <li class="tab" onclick="onClickSarahsseed()"><a class="active" href="#test1">SARAH'S SEED</a></li>
+          <li class="tab" onclick="onClickSarahsseed()"><a class="active" href="#test1">SARAH'S SEEDS</a></li>
           <li class="tab" onclick="onClickJewelsPickaxes()"><a href="#test2">JEWEL'S PICKAXES</a></li>
-          <li class="tab"><a href="#test3">JEWEL'S DIAMONDS</a></li>
-          <li class="tab"><a href="#test3">SARAH'S FLOWERS</a></li>
+          <li class="tab" onclick='onClickJewelsDiamonds()'><a href="#test3">JEWEL'S DIAMONDS</a></li>
+          <li class="tab" onclick='onClickSarahFlowers()'><a href="#test3">SARAH'S FLOWERS</a></li>
         </ul>
       </div>
     </nav>
     
 
     <ul class="sidenav" id="mobile-demo">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Add</a></li>
+      <li><a onclick="onClickDonate()">Donate</a></li>
       <li><a href="collapsible.html">Logout</a></li>
     </ul>
 
@@ -166,10 +207,7 @@
     <div class="container">
       <div class="col">
         <div class="row" >
-          <!-- <h6>Number of clusters:</h6> -->
-          <!-- <h6>Number of members to next raffle result:</h6> -->
-          <!-- <h6>detailssssss</h6> -->
-          <!-- <h6>detailssssss</h6> -->
+
         </div>
         <div class="row" id='winnerdetails'>
           <h6>GEM ID: A1</h6>
@@ -202,7 +240,7 @@
           <ul style="list-style-type:disc;">
             <li><h5>Sarah's Seeds</h5></li>
               <ul>
-                <li><h6>Where Members Sow Seed For Harvest</h6></li>
+                <li><h6>Where Members Sow Seeds For Harvest</h6></li>
               </ul>
             <li><h5>Jewel's Pickaxes</h5></li>
               <ul>
@@ -225,18 +263,21 @@
 
             <div class="row">
               <div class="input-field col s12">
-                <input placeholder="Diamond Name" id="diamondName" type="text" class="validate">
+                <i class="material-icons prefix">account_circle</i>
+                <input placeholder="Enter Diamond Name" id="diamondName" type="text" class="validate">
                 <label for="diamondName">Diamond Name</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input placeholder="Phone Number" id="phoneNumber" type="text" class="validate">
+                <i class="material-icons prefix">smartphone</i>
+                <input id="phoneNumber" type="tel" class="validate">
                 <label for="phoneNimber">Phone Number</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
                 <input id="email" type="email" class="validate">
                 <label for="email">Email</label>
               </div>
@@ -244,14 +285,20 @@
 
             <div class="row">
               <div class="input-field col s12">
-                <select>
+                <select id = "paymentType">
                   <option value="" disabled selected>Choose your option</option>
-                  <option value="1">Cash App</option>
-                  <option value="2">Bitcoin</option>
-                  <option value="3">Other</option>
+                  <option value="Cash App">Cash App</option>
+                  <option value="Bitcoin">Bitcoin</option>
+                  <option value="Other">Other</option>
                 </select>
                 <label>Select Your Payment Option</label>
               </div>
+            </div>
+
+            <div class="row">
+              <button id="butttonn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                  <i class="material-icons right">send</i>
+              </button>
             </div>
             
             </div>
@@ -267,5 +314,34 @@
     src="https://drive.google.com/uc?export=download&id=1T91etovwthJF5bXSK1onXcxPfllMh9PK" 
     style="display: none;" ; 
     />
+
+    <img 
+    id="myImage2" 
+    src="https://drive.google.com/uc?export=download&id=1TPkQMBDGar6NM_5Nx7eadfeGoIH9v5GX" 
+    style="display: none;" ; 
+    />
   </body>
+
+  <script>
+
+    document.getElementById("butttonn").addEventListener("click",afterButtonClicked);
+
+    function afterButtonClicked(){
+        var diamondName = document.getElementById('diamondName').value;
+        var phoneNumber = document.getElementById('phoneNumber').value;
+        var emailAddress = document.getElementById('email').value;
+        var paymentType = document.getElementById('paymentType').value;
+
+
+        var rawData = {diamondName: diamondName,phoneNumber:phoneNumber,emailAddress:emailAddress,paymentType:paymentType}
+        alert('You just submitted '+JSON.stringify(rawData))
+
+        google.script.run.formSubmit(rawData);
+        document.getElementById('diamondName').value='';
+        document.getElementById('phoneNumber').value='';
+        document.getElementById('email').value='';
+
+    }
+
+  </script>
 </html>
