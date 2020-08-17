@@ -24,15 +24,39 @@
       // const names = ['Ashan', 'Roshan', 'John', 'Sanath','Michal','Rose'];
       // var D = google.script.run.withSuccessHandler(A).getUserData();
       var names = [];
-      for(i=0;i<20;i++){
+      for(i=0;i<33;i++){
         names.push(i+1);
       }
 
       function algorithmToWin(names){
 
-        
+        var l = names.length;
+        console.log(l);
+        var numberOfClusters=0;
+        if (l<=15){
+          numberOfClusters=1;
+        }
+        else{
+          for(i=5;0;i--){
+            if(l<=16+Math.pow(2,4+i)){
+
+              numberOfClusters=Math.pow(2,i+1);
+              break;
+
+
+            }
+            else{
+              return false;
+            }
+          }
+        }
+
+        console.log(numberOfClusters);
         
       }
+
+
+      
 
 
 
@@ -74,6 +98,7 @@
         // console.log("Run");
         // console.log(D);
 
+        algorithmToWin(names);
 
 
 
