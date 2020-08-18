@@ -1,42 +1,61 @@
-const doGet = () => {
-  const template = HtmlService.createTemplateFromFile('index');
-  const html = template.evaluate().setTitle('Main');
-  return html;
+const sId = '18Uof7nIUbrr9AhJn3efwvX_nbVICdbGSxzfXYuouHJg';
+const Route = {};
+
+Route.path = function (route, callback) {
+  Route[route] = callback;
+};
+
+function render(file, argsObject) {
+  const tmp = HtmlService.createTemplateFromFile(file);
+  if (argsObject) {
+    const keys = Object.keys(argsObject);
+
+    keys.forEach(function (key) {
+      tmp[key] = argsObject[key];
+    });
+  }
+  return tmp.evaluate().addMetaTag('viewport', 'width=device-width,initial-scale=1.0');
+}
+
+function loadForm() {
+  const ss = SpreadsheetApp.openById(sId);
+  const ws = ss.getSheetByName('Data');
+
+  const list = ws.getRange(2, 1, ws.getRange('A1').getDataRegion().getLastRow() - 1, 1).getValues();
+  const htmlListArray = list.map(function (r) {
+    return r[0];
+  });
+  Logger.log(htmlListArray);
+  return render('form', { list: htmlListArray });
+}
+
+function loadSarahsSeeds() {
+  return render('sarahsSeeds');
+}
+
+function loadjewelsPickaxes() {
+  return render('jewelsPickaxes');
+}
+
+function loadsarahsFlowers() {
+  return render('sarahsFlowers');
+}
+
+function loadjewelsDiamonds() {
+  return render('jewelsDiamonds');
+}
+
+const doGet = (e) => {
+  Route.path('form', loadForm);
+  Route.path('sarahsseeds', loadSarahsSeeds);
+  Route.path('jewelspickaxes', loadjewelsPickaxes);
+  Route.path('sarahsflowers', loadsarahsFlowers);
+  Route.path('jewelsdiamonds', loadjewelsDiamonds);
+
+  if (Route[e.parameters.v]) {
+    return Route[e.parameters.v]();
+  }
+  return render('index');
 };
 
 export default doGet;
-
-// const ID = 'Your-SpreadsheetID-goes-here';
-// const lock = 'admin';
-
-// const conf = 'config';
-// const ss = SpreadsheetApp.openById(ID);
-
-// function doGet(e) {
-//   if (Object.keys(e.parameter).length === 0) {
-//     let htmlFile;
-//     const sheetName = conf;
-//     const activeSheet = ss.getSheetByName(sheetName);
-//     if (activeSheet !== null) {
-//       const values = activeSheet.getDataRange().getValues();
-//       for (let i = 0, iLen = values.length; i < iLen; i++) {
-//         if (values[i][0] == 'Passcode') {
-//           const passCheck = activeSheet.getRange(i + 1, 2).getValues();
-//           if (passCheck == lock) {
-//             htmlFile = 'Dashboard';
-//             activeSheet.getRange(i + 1, 2).clearContent();
-//           } else {
-//             htmlFile = 'Login';
-//           }
-//         }
-//       }
-//     } else {
-//       config();
-//       htmlFile = 'Login';
-//     }
-//     // return HtmlService.createHtmlOutputFromFile(htmlFile);
-//   }
-//   return HtmlService.createHtmlOutputFromFile(htmlFile);
-// }
-
-// export default doGet;

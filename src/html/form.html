@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Sarah's Flowers & Jewel's Diamonds</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./sarahsSeeds.html">Sarah's Seeds</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./jewelsPickaxes.html">Jewel's Pickaxes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./jewelsDiamonds.html">Jewel's Diamonds</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./sarahsFlowers.html">Sarah's Flowers</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="./form.html">Donate</a>
+          </li>
+          <!-- <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <form class="text-center border border-light p-5 needs-validation" action="#!" novalidate>
+        <p class="h4 mb-4">Donate</p>
+
+        <!-- Name -->
+
+        <input type="text" id="diamondName" class="form-control mb-4" placeholder="Diamond Name" />
+
+        <!-- Email -->
+        <input type="email" id="email" class="form-control mb-4" placeholder="E-mail" />
+
+        <!-- Phone Number -->
+        <input type="tel" id="phoneNumber" class="form-control mb-4" placeholder="Phone Number" />
+
+        <!-- Payment Options -->
+        <select class="browser-default custom-select mb-4" id="paymentType">
+          <option value="" disabled>Choose your payment option</option>
+          <option value="1" selected>Payment Option</option>
+          <option value="Cash App">Cash App</option
+          ><option value="BitCoin">BitCoin</option>
+          <option value="Othe">Othe</option>
+        </select>
+
+        <!-- Copy email -->
+        <div class="custom-control custom-checkbox mb-4">
+          <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy" />
+          <label class="custom-control-label" for="defaultContactFormCopy"
+            >Send me a confirmation email</label
+          >
+        </div>
+
+        <!-- Send button -->
+        <button class="btn btn-info btn-block" id="btn" type="submit">Send</button>
+      </form>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Self-executing function
+      (function () {
+        'use strict';
+        window.addEventListener(
+          'load',
+          function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+              form.addEventListener(
+                'submit',
+                function (event) {
+                  if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+                  form.classList.add('was-validated');
+                },
+                false
+              );
+            });
+          },
+          false
+        );
+      })();
+    </script>
+    <script>
+      document.getElementById('btn').addEventListener('click', afterButtonClicked);
+
+      function afterButtonClicked() {
+        var diamondName = document.getElementById('diamondName').value;
+        var phoneNumber = document.getElementById('phoneNumber').value;
+        var emailAddress = document.getElementById('email').value;
+        var paymentType = document.getElementById('paymentType').value;
+
+        var rawData = {
+          diamondName: diamondName,
+          phoneNumber: phoneNumber,
+          emailAddress: emailAddress,
+          paymentType: paymentType,
+        };
+        alert('You just submitted ' + JSON.stringify(rawData));
+
+        google.script.run.formSubmit(rawData);
+        document.getElementById('diamondName').value = '';
+        document.getElementById('phoneNumber').value = '';
+        document.getElementById('email').value = '';
+      }
+    </script>
+  </body>
+</html>
