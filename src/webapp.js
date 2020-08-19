@@ -14,7 +14,9 @@ function render(file, argsObject) {
       tmp[key] = argsObject[key];
     });
   }
-  return tmp.evaluate().addMetaTag('viewport', 'width=device-width,initial-scale=1.0');
+  const output = tmp.evaluate().addMetaTag('viewport', 'width=device-width,initial-scale=1.0');
+  output.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  return output;
 }
 
 function loadForm() {
