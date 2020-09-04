@@ -14,8 +14,11 @@ function render(file, argsObject) {
       tmp[key] = argsObject[key];
     });
   }
-  const output = tmp.evaluate().addMetaTag('viewport', 'width=device-width,initial-scale=1.0');
-  output.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  const output = tmp.evaluate();
+  output
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME)
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
+    .addMetaTag('viewport', 'width=device-width,initial-scale=1.0');
   return output;
 }
 
@@ -47,12 +50,17 @@ function loadjewelsDiamonds() {
   return render('jewelsDiamonds');
 }
 
+function loadformComplete() {
+  return render('formComplete');
+}
+
 const doGet = (e) => {
   Route.path('form', loadForm);
   Route.path('sarahsseeds', loadSarahsSeeds);
   Route.path('jewelspickaxes', loadjewelsPickaxes);
   Route.path('sarahsflowers', loadsarahsFlowers);
   Route.path('jewelsdiamonds', loadjewelsDiamonds);
+  Route.path('formcomplete', loadformComplete);
 
   if (Route[e.parameters.v]) {
     return Route[e.parameters.v]();

@@ -19,7 +19,7 @@
 
       window.onload = function () {
 
-       google.script.run.withSuccessHandler(drawOnCanvas).getStage3WinnerData();
+       google.script.run.withSuccessHandler(drawOnCanvas).getUserData();
       //  drawOnCanvas(arraynew);
       //  console.log('arrayew', arraynew);
 
@@ -27,7 +27,7 @@
 
       document.addEventListener("DOMContentLoaded",function(){
 
-        google.script.run.withSuccessHandler(generateCanvas).getStage3WinnerData();  
+        google.script.run.withSuccessHandler(generateCanvas).getUserData();  
         
       })
 
@@ -38,10 +38,21 @@
         //   arraynew.push(element);
           
         // });
-        
-        arrayLength =dataArray.length;
-        for(var j=1;j<arrayLength;j+=1){
 
+        arrayLength =dataArray.length;
+        for(var j=0;j<arrayLength;j+=1){
+          if(j==0){
+            var tbody = document.getElementById("carousel_id");
+            var row = document.createElement("div");
+            row.className = 'carousel-item active';
+            var col = document.createElement('canvas');
+            col.id = 'myCanvas_0';
+            col.className="d-block w-100";
+            col.height=1080;
+            col.width=1080;
+            row.appendChild(col);
+            tbody.appendChild(row);
+          }else{
 
             var tbody = document.getElementById("carousel_id");
             var row = document.createElement("div");
@@ -54,7 +65,7 @@
             col.width=1080;
             row.appendChild(col);
             tbody.appendChild(row);
-        
+          }
           
 
       }
@@ -63,8 +74,18 @@
 
       function drawOnCanvas(cluster) {
 
+        // console.log("Draw on canvas");
+        // console.log(cluster);
+        // console.log(cluster.length);
 
-        for(var i=0;i<cluster.length;i+=1){
+
+        cluster=fillEmptySpotsInArray(cluster);
+        // console.log("Draw on canvas2");
+        // console.log(cluster);
+        // console.log(cluster.length);
+
+
+        for(var i=0;i<3;i+=1){
           const myCanvas = $('#myCanvas_'+i);
           const ctx = myCanvas[0].getContext('2d');
           const image = document.getElementById('myImage2');
@@ -88,31 +109,31 @@
           ctx.fillText(cluster[i][3],869,1021 );//12
           //Box5
           ctx.textAlign = "center";
-          ctx.fillText(cluster[i][4],969,450); //11
+          ctx.fillText(cluster[i][4],212,764); //11
           //Box6
           ctx.textAlign = "center";
-          ctx.fillText(cluster[i][5],875,61); //10
+          ctx.fillText(cluster[i][5],883,764); //10
           //Box7
           ctx.textAlign = "center";
-          ctx.fillText(cluster[i][6],700,61);//9
+          ctx.fillText(cluster[i][6],539,925);//9
           //Box8
           ctx.textAlign = "center";
-          ctx.fillText(cluster[i][7],233,61);//8
+          ctx.fillText(cluster[i][7],875,61);//8
           //Box9
           ctx.textAlign = "center";
-          ctx.fillText(cluster[i][8],883,347);//7
+          ctx.fillText(cluster[i][8],700,61);//7
           //Box10
           ctx.textAlign = "center";
-          ctx.fillText(cluster[i][9],214,347);//6
+          ctx.fillText(cluster[i][9],233,61);//6
           //Box11
           ctx.textAlign = "center";
-          ctx.fillText(cluster[i][10],883,764); //5
+          ctx.fillText(cluster[i][10],969,450); //5
           //Box12
           ctx.textAlign = "center";
-          ctx.fillText(cluster[i][11],212,764 );//4
+          ctx.fillText(cluster[i][11],883,347 );//4
           //Box13
           ctx.textAlign = "center";
-          ctx.fillText(cluster[i][12],539,925);//3
+          ctx.fillText(cluster[i][12],214,347);//3
           //Box14
           ctx.textAlign = "center";
           ctx.fillText(cluster[i][13],539,187);//2
@@ -126,7 +147,22 @@
 
         }
 
-        
+        function fillEmptySpotsInArray(Array){
+          
+          for(var i=0;i<Array.length;i+=1){
+            if(Array[i].length<15){
+              do{
+                Array[i].unshift('-');
+              }while(Array[i].length<15);
+
+            }
+          }
+
+          return Array;
+
+
+        }
+
       }
 
 
@@ -153,7 +189,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>">Home<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=sarahsseeds">Sarah's Seeds</a>
           </li>
           <li class="nav-item">
@@ -162,7 +198,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=jewelsdiamonds">Jewel's Diamonds</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=sarahsflowers">Sarah's Flowers</a>
           </li>
           <li class="nav-item">
@@ -180,11 +216,6 @@
         </ol>
 
         <div id="carousel_id" class="carousel-inner">
-
-          <div class="carousel-item active">
-            <canvas id="myCanvas_0" width=1080
-            height=1080 class="d-block w-100"></canvas>
-          </div>
 
 
         </div>
@@ -212,7 +243,7 @@
 
     <img 
     id="myImage2" 
-    src="https://drive.google.com/uc?export=download&id=15ow8E6Ay3_kg5U9NbxjovTSo65nL_LGD" 
+    src="https://drive.google.com/uc?export=download&id=1TPkQMBDGar6NM_5Nx7eadfeGoIH9v5GX" 
     style="display: none;" ; 
     />
   </body>

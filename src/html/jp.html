@@ -15,56 +15,66 @@
     />
 
     <script>
-      // var arraynew = new Array();
+      
+      var arraynew = new Array();
 
+    
       window.onload = function () {
-
-       google.script.run.withSuccessHandler(drawOnCanvas).getStage3WinnerData();
-      //  drawOnCanvas(arraynew);
-      //  console.log('arrayew', arraynew);
-
+        drawOnCanvas(arraynew);
       };
 
       document.addEventListener("DOMContentLoaded",function(){
 
-        google.script.run.withSuccessHandler(generateCanvas).getStage3WinnerData();  
-        
-      })
+        google.script.run.withSuccessHandler(generateCanvas).getWinnerData();  
 
+      })
 
       function generateCanvas(dataArray){
 
-        // dataArray.forEach(element => {
-        //   arraynew.push(element);
-          
-        // });
-        
-        arrayLength =dataArray.length;
-        for(var j=1;j<arrayLength;j+=1){
+dataArray.forEach(element => {
+  arraynew.push(element);
+  
+});
+arrayLength =dataArray.length;
+for(var j=0;j<arrayLength;j+=1){
+  if(j==0){
+    var tbody = document.getElementById("carousel_id");
+    var row = document.createElement("div");
+    row.className = 'carousel-item active';
+    var col = document.createElement('canvas');
+    col.id = 'myCanvas_0';
+    col.className="d-block w-100";
+    col.height=1080;
+    col.width=1080;
+    row.appendChild(col);
+    tbody.appendChild(row);
+  }else{
+
+    var tbody = document.getElementById("carousel_id");
+    var row = document.createElement("div");
+    row.className = 'carousel-item';
+    var col = document.createElement('canvas');
+    col.id = 'myCanvas_'+j;
+    col.className="d-block w-100";
+    console.log('myCanvas_'+j);
+    col.height=1080;
+    col.width=1080;
+    row.appendChild(col);
+    tbody.appendChild(row);
+  }
+  
+
+}
+}
 
 
-            var tbody = document.getElementById("carousel_id");
-            var row = document.createElement("div");
-            row.className = 'carousel-item';
-            var col = document.createElement('canvas');
-            col.id = 'myCanvas_'+j;
-            col.className="d-block w-100";
-            console.log('myCanvas_'+j);
-            col.height=1080;
-            col.width=1080;
-            row.appendChild(col);
-            tbody.appendChild(row);
-        
-          
-
-      }
-    }
 
 
       function drawOnCanvas(cluster) {
 
+        cluster=fillEmptySpotsInArray(cluster);
 
-        for(var i=0;i<cluster.length;i+=1){
+        for(var i=0;i<3;i+=1){
           const myCanvas = $('#myCanvas_'+i);
           const ctx = myCanvas[0].getContext('2d');
           const image = document.getElementById('myImage2');
@@ -72,67 +82,73 @@
           myCanvas.height = image.naturalHeight;
           ctx.drawImage(image, 0, 0);
 
-          
-          //Box1
-          ctx.font = "25px Dishonorable Mention";
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][0], 97,450);//15
-          //Box2
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][1],234,1022);//14
-          //Box3
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][2],701,1021);//13
-          //Box4
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][3],869,1021 );//12
-          //Box5
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][4],969,450); //11
-          //Box6
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][5],875,61); //10
-          //Box7
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][6],700,61);//9
-          //Box8
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][7],233,61);//8
-          //Box9
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][8],883,347);//7
-          //Box10
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][9],214,347);//6
-          //Box11
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][10],883,764); //5
-          //Box12
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][11],212,764 );//4
-          //Box13
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][12],539,925);//3
-          //Box14
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][13],539,187);//2
-          //Box16
-          ctx.textAlign = "center";
-          ctx.fillText(cluster[i][14],539,566); //1
-
-          //ID
-          ctx.textAlign = "center";
-          ctx.fillText("ID: "+i,45,150);//ID
+            //Box1
+            ctx.font = "16px Dishonorable Mention";
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][0], );
+            //Box2
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][1], );
+            //Box3
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][2], );
+            //Box4
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][3],  );
+            //Box5
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][4],); 
+            //Box6
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][5],);
+            //Box7
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][6],);
+            //Box8
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][7],);
+            //Box9
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][8],);
+            //Box10
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][9],);
+            //Box11
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][10],);
+            //Box12
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][11], );//
+            //Box13
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][12],);//
+            //Box14
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][13],);//
+            //Box16
+            ctx.textAlign = "center";
+            ctx.fillText(cluster[i][14],);//
 
         }
 
-        
+        function fillEmptySpotsInArray(Array){
+          
+          for(var i=0;i<Array.length;i+=1){
+            if(Array[i].length<15){
+              do{
+                Array[i].unshift('-');
+              }while(Array[i].length<15);
+
+            }
+          }
+
+          return Array;
+
+
+        }
+
       }
-
-
-      // console.log(value);
     </script>
-
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -156,39 +172,36 @@
           <li class="nav-item">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=sarahsseeds">Sarah's Seeds</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=jewelspickaxes">Jewel's Pickaxes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=jewelsdiamonds">Jewel's Diamonds</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=sarahsflowers">Sarah's Flowers</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=form">Form</a>
           </li>
+          <!-- <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
         </ul>
       </div>
     </nav>
 
     <div class="container">
-      <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         </ol>
-
-        <div id="carousel_id" class="carousel-inner">
-
-          <div class="carousel-item active">
-            <canvas id="myCanvas_0" width=1080
-            height=1080 class="d-block w-100"></canvas>
-          </div>
+        <div class="carousel-inner">
 
 
         </div>
-
+        
         <a
           class="carousel-control-prev"
           href="#carouselExampleIndicators"
@@ -212,7 +225,7 @@
 
     <img 
     id="myImage2" 
-    src="https://drive.google.com/uc?export=download&id=15ow8E6Ay3_kg5U9NbxjovTSo65nL_LGD" 
+    src="https://drive.google.com/uc?export=download&id=1Y2IHeZbeHuU4wybI6Cn4_1CYy39aMUVh" 
     style="display: none;" ; 
     />
   </body>
@@ -234,3 +247,10 @@
     ></script>
   </body>
 </html>
+
+114,632
+889,930
+
+
+653, 56
+

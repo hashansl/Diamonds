@@ -1,7 +1,7 @@
-function getUserData() {
+function getStage1WinnerData() {
   const sId = '18Uof7nIUbrr9AhJn3efwvX_nbVICdbGSxzfXYuouHJg';
   const ss = SpreadsheetApp.openById(sId);
-  const ws = ss.getSheetByName('Stage1Combinations');
+  const ws = ss.getSheetByName('Stage2Combinations');
 
   let A;
 
@@ -15,4 +15,4 @@ function getUserData() {
   return A;
 }
 
-export default getUserData;
+export default getStage1WinnerData;

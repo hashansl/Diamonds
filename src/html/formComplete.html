@@ -13,7 +13,6 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
-    <script></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -31,7 +30,7 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?"
               >Home<span class="sr-only">(current)</span></a
             >
@@ -42,7 +41,7 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= ScriptApp.getService().getUrl();?>?v=jewelspickaxes"
+            <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=jewelspickaxes"
               >Jewel's Pickaxes</a
             >
           </li>
@@ -59,52 +58,22 @@
           <li class="nav-item">
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=form">Form</a>
           </li>
-          <!-- <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li> -->
         </ul>
       </div>
     </nav>
 
-    <!-- Jumbotron -->
-    <div class="jumbotron text-center blue-grey lighten-5">
-      <!-- Title -->
-      <h2 class="card-title h2">Sarah's Jewels Automated Member Update In Real-Time</h2>
+    <br />
 
-      <!-- Subtitle -->
-      <p class="indigo-text my-4 font-weight-bold">
-        Please Submit Gift Before You Complete Intake Form
-      </p>
-      <p class="indigo-text">
-        Submit Gift To: Cashapp: $SSirCharlesss
-      </p>
-
-      <!-- Grid row -->
-      <div class="row d-flex justify-content-center">
-        <!-- Grid column -->
-        <div class="col-xl-7 pb-2">
-          <p class="card-text">
-            Sarah's Seeds: Where Members Sow Seeds For Harvest / Jewel's Pickaxes: Where Members
-            gain tools For Diamond Mining / Jewel's Diamonds: Where Members Mine For Diamonds /
-            Sarah's Flowers: Where Members Reap All That Was Sowed
-          </p>
-        </div>
-
-        <!-- Grid column -->
+    <div class="container">
+      <!-- Success Alert -->
+      <div class="alert alert-success alert-dismissible fade show">
+        <strong>Congratulations! </strong> You have submitted your data.
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
       </div>
-      <!-- Grid row -->
 
-      <hr class="my-4 pb-2" />
-
-      <!-- <button
-        class="btn blue-gradient btn-rounded"
-        onclick="https://script.google.com/macros/s/AKfycbzsCFCkIya79cjPV8KHW2BfoI5Glk1u6Mi3gtDopvo/dev?v=form"
-      >
-        Register
-        <i class="far fa-gem ml-1"></i>
-      </button> -->
+      <button type="button" class="btn btn-lg btn-primary" disabled>Submit Again</button>
+      <button type="button" class="btn btn-secondary btn-lg" disabled>Home</button>
     </div>
-    <!-- Jumbotron -->
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

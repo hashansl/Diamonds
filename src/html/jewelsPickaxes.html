@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <base target="_top">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
@@ -14,111 +15,129 @@
     />
 
     <script>
-      // const names = ['Ashan', 'Roshan', 'John', 'Sanath', 'Michal', 'Rose'];
-      var names = [];
+      // var arraynew = new Array();
 
-      
-      // const arrpush =(array)=>{
-      //   array.forEach((e)=>{
-      //     names.push(e);
-      //   })
-      // }
-
-      function A(i){
-          if(i=0){
-            return 15;
-          }
-          else{
-            return A(i-1)+ Math.pow(2,i+2);
-          }
-
-
-        }
-
-      
-      var DA =[]
-
-
-    
       window.onload = function () {
-        // google.script.run.withSuccessHandler(arrpush).getUserData();
-        drawOnCanvas();
-        var n = 5;
-        for(i=0;5;i++){
+
+        google.script.run.withSuccessHandler(drawOnCanvas).getStage1WinnerData();
+      //  drawOnCanvas(arraynew);
+      //  console.log('arrayew', arraynew);
+
+      };
+
+      document.addEventListener("DOMContentLoaded",function(){
+
+        google.script.run.withSuccessHandler(generateCanvas).getStage1WinnerData();  
         
-        var s = A(i);
-        DA.push(s);
+      })
+
+
+      function generateCanvas(dataArray){
+
+        // dataArray.forEach(element => {
+        //   arraynew.push(element);
+          
+        // });
+
+        arrayLength =dataArray.length;
+        for(var j=1;j<arrayLength;j+=1){
+
+
+            var tbody = document.getElementById("carousel_id");
+            var row = document.createElement("div");
+            row.className = 'carousel-item';
+            var col = document.createElement('canvas');
+            col.id = 'myCanvas_'+j;
+            col.className="d-block w-100";
+            console.log('myCanvas_'+j);
+            col.height=1080;
+            col.width=1080;
+            row.appendChild(col);
+            tbody.appendChild(row);
+          
+      }
+    }
+
+
+      function drawOnCanvas(cluster) {
+
+
+
+
+
+        for(var i=0;i<cluster.length;i+=1){
+          const myCanvas = $('#myCanvas_'+i);
+          const ctx = myCanvas[0].getContext('2d');
+          const image = document.getElementById('myImage2');
+          myCanvas.width = image.naturalWidth;
+          myCanvas.height = image.naturalHeight;
+          ctx.drawImage(image, 0, 0);
+
+          
+          //Box1
+          ctx.font = "25px Dishonorable Mention";
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][0],114,632);//15
+          //Box2
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][1],236,1037 );//14
+          //Box3
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][2],668,1037 );//13
+          //Box4
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][3],870,1041);//12
+          //Box5
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][4],955,445); //11
+          //Box6
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][5],855,56); //10
+          //Box7
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][6],653,56);//9
+          //Box8
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][7],202, 56 );//8
+          //Box9
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][8],891,345 );//7
+          //Box10
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][9],185, 343);//6
+          //Box11
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][10],892,933 ); //5
+          //Box12
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][11],185,930 );//4
+          //Box13
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][12],535 ,886);//3
+          //Box14
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][13],528,211);//2
+          //Box16
+          ctx.textAlign = "center";
+          ctx.fillText(cluster[i][14],539,504); //1
+
+          //ID
+          ctx.textAlign = "center";
+          ctx.fillText("ID: "+i,45,150);//ID
 
         }
 
-        console.log(DA)
-      };
-      function drawOnCanvas() {
-
-        
-        // console.log(names[0]);
-        // alert(names);
-        // console.log(names);
-        const myCanvas = $('#myCanvas');
-        const ctx = myCanvas[0].getContext('2d');
-        const image = document.getElementById('myImage2');
-        myCanvas.width = image.naturalWidth;
-        myCanvas.height = image.naturalHeight;
-        ctx.drawImage(image, 0, 0);
-
-        //Box1
-        ctx.font = "16px Dishonorable Mention";
-        ctx.textAlign = "center";
-        ctx.fillText(names[0], 202, 56);
-        //Box2
-        ctx.textAlign = "center";
-        ctx.fillText(names[1], 653, 56);
-        //Box3
-        ctx.textAlign = "center";
-        ctx.fillText(names[2], 855, 56);
-        //Box4
-        ctx.textAlign = "center";
-        ctx.fillText(names[3],185 ,343 );
-        //Box5
-        ctx.textAlign = "center";
-        ctx.fillText(names[4],528,211);
-        //Box6
-        ctx.textAlign = "center";
-        ctx.fillText(names[5],891,345);
-        //Box7
-        ctx.textAlign = "center";
-        ctx.fillText(names[0],114,632);
-        //Box8
-        ctx.textAlign = "center";
-        ctx.fillText(names[0],539,504);
-        //Box9
-        ctx.textAlign = "center";
-        ctx.fillText(names[0],955,445);
-        //Box10
-        ctx.textAlign = "center";
-        ctx.fillText(names[0],185,930);
-        //Box11
-        ctx.textAlign = "center";
-        ctx.fillText(names[0],535,886);
-        //Box12
-        ctx.textAlign = "center";
-        ctx.fillText(names[0],889,930 );
-        //Box13
-        ctx.textAlign = "center";
-        ctx.fillText(names[0],236,1037);
-        //Box14
-        ctx.textAlign = "center";
-        ctx.fillText(names[0], 668,1037);
-        //Box16
-        ctx.textAlign = "center";
-        ctx.fillText(names[0],867,1037);
 
       }
+
+
+      // console.log(value);
     </script>
+
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Sarah's Flowers & Jewel's Diamonds</a>
+      <a class="navbar-brand" href="#">Sarah's Jewels</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -148,36 +167,29 @@
             <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=sarahsflowers">Sarah's Flowers</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=form">Donate</a>
+            <a class="nav-link" href="<?= ScriptApp.getService().getUrl(); ?>?v=form">Form</a>
           </li>
-          <!-- <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li> -->
         </ul>
       </div>
     </nav>
 
     <div class="container">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         </ol>
-        <div class="carousel-inner">
+
+        <div id="carousel_id" class="carousel-inner">
+
           <div class="carousel-item active">
-            <!-- <img src="/images/LD.jpg" class="d-block w-100" alt="..." /> -->
-            <canvas id="myCanvas" width=1080
+            <canvas id="myCanvas_0" width=1080
             height=1080 class="d-block w-100"></canvas>
           </div>
 
-          <div class="carousel-item">
-            <img src="https://drive.google.com/uc?export=download&id=1T91etovwthJF5bXSK1onXcxPfllMh9PK" class="d-block w-100" alt="..." />
-          </div>
-          <div class="carousel-item">
-            <img src="https://drive.google.com/uc?export=download&id=1T91etovwthJF5bXSK1onXcxPfllMh9PK" class="d-block w-100" alt="..." />
-          </div>
+
         </div>
-        
+
         <a
           class="carousel-control-prev"
           href="#carouselExampleIndicators"
@@ -201,7 +213,7 @@
 
     <img 
     id="myImage2" 
-    src="https://drive.google.com/uc?export=download&id=1T91etovwthJF5bXSK1onXcxPfllMh9PK" 
+    src="https://drive.google.com/uc?export=download&id=1Y2IHeZbeHuU4wybI6Cn4_1CYy39aMUVh" 
     style="display: none;" ; 
     />
   </body>
